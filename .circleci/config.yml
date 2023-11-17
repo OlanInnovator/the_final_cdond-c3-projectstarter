@@ -35,9 +35,7 @@ commands:
           command: |
             aws s3 rm s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
             aws cloudformation delete-stack --stack-name udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}
-            aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}            
-  
-  
+            aws cloudformation delete-stack --stack-name udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}
 
   install_awscli:
       description: Install AWS CLI v2
@@ -348,7 +346,7 @@ jobs:
             then
               return 1
             else
-              return 0
+              return 1
             fi
       - run:
           name: Frontend smoke test.
@@ -420,7 +418,6 @@ jobs:
                  echo ------ Nothing to cleanup - "Current: $OldWorkflowID" ------
               fi
               done
-
             
 workflows:
   default:
