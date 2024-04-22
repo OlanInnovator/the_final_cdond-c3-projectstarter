@@ -409,7 +409,7 @@ jobs:
               for OldWorkflowID in "${STACKS[@]}"; do
               if [[ "${CIRCLE_WORKFLOW_ID:0:7}" =~ $OldWorkflowID ]]
               then
-                echo ------ Cleaning up old jobs ------
+                echo ------ Cleaning up old jobs   ------
                 aws s3 rm "s3://${oldWorkFlowID}" --recursive
                 aws cloudformation delete-stack --stack-name "${oldWorkFlowID}"
                 # aws cloudformation delete-stack --stack-name "udapeople-backend-${OldWorkFlowID}"
